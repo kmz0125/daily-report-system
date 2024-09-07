@@ -1,4 +1,4 @@
-package actions.viwes;
+package actions.views;
 
 import java.util.ArrayList;
 import java.util.List;
