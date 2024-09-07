@@ -101,7 +101,7 @@ public class EmployeeAction extends ActionBase {
                     AttributeConst.DEL_FLAG_FALSE.getIntegerValue());
 
             //アプリケーションスコープからpepper文字列を取得
-            String pepper = getContextscope(PropertyConst.PEPPER);
+            String pepper = getContextScope(PropertyConst.PEPPER);
 
             //従業員情報登録
             List<String> errors = service.create(ev, pepper);
@@ -195,7 +195,7 @@ public class EmployeeAction extends ActionBase {
                     AttributeConst.DEL_FLAG_FALSE.getIntegerValue());
 
             //アプリケーションスコープからpepper文字列を取得
-            String pepper = getContextscope(PropertyConst.PEPPER);
+            String pepper = getContextScope(PropertyConst.PEPPER);
 
             //従業員情報更新
             List<String> errors = service.update(ev, pepper);
