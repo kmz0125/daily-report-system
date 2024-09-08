@@ -32,7 +32,7 @@ public class ReportConverter {
      * @param r Reportのインスタンス
      * @return ReportViewのインスタンス
      */
-    public static ReportView tovView(Report r) {
+    public static ReportView toView(Report r) {
 
         if (r == null) {
             return null;
@@ -57,7 +57,7 @@ public class ReportConverter {
         List<ReportView> evs = new ArrayList<>();
 
         for (Report r : list) {
-            evs.add(tovView(r));
+            evs.add(toView(r));
         }
 
         return evs;
