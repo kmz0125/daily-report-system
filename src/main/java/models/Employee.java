@@ -91,4 +91,16 @@ public class Employee {
      */
     @Column(name=JpaConst.EMP_COL_DELETE_FLAG, nullable=false)
     private Integer deleteFlag;
+
+    /**
+     *出勤時間
+     */
+    @Column(name=JpaConst.EMP_COL_CLOCK_IN, nullable=false)
+    private LocalDateTime clockIn;
+
+    /**
+     * 退勤
+     */
+    @Column(name=JpaConst.EMP_COL_CLOCK_OUT, nullable=false)
+    private LocalDateTime clockOut;
 }

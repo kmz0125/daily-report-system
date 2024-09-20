@@ -17,6 +17,16 @@
 <input type="date" name="${AttributeConst.REP_DATE.getValue()}" id="${AttributeConst.REP_DATE.getValue()}" value="<fmt:formatDate value='${reportDay}' pattern='yyyy-MM-dd' />">
 <br /><br />
 
+<fmt:parseDate value="${report.clockIn}" pattern="yyyy-MM-dd'T'HH:mm" var="clockIn" type="date" />
+<label for="${AttributeConst.REP_CLOCK_IN.getValue()}">出勤時間</label><br />
+<input type="datetime-local" name="${AttributeConst.REP_CLOCK_IN.getValue()}" id="${AttributeConst.REP_CLOCK_IN.getValue()}" value="<fmt:formatDate value='${clockIn}' pattern='yyyy-MM-dd HH:mm' />">
+<br /><br />
+
+<fmt:parseDate value="${report.clockOut}" pattern="yyyy-MM-dd'T'HH:mm" var="clockOut" type="date" />
+<label for="${AttributeConst.REP_CLOCK_OUT.getValue()}">退勤時間</label><br />
+<input type="datetime-local" name="${AttributeConst.REP_CLOCK_OUT.getValue()}" id="${AttributeConst.REP_CLOCK_OUT.getValue()}" value="<fmt:formatDate value='${clockOut}' pattern='yyyy-MM-dd HH:mm' />">
+<br /><br />
+
 <label>氏名</label><br />
 <c:out value="${sessionScope.login_employee.name}" />
 <br /><br />

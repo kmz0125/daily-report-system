@@ -57,4 +57,14 @@ public class EmployeeView {
      * 削除された従業員かどうか（現役：0、削除済み：1)
      */
     private Integer deleteFlag;
+
+    /**
+     * 出勤時間
+     */
+    private LocalDateTime clockIn;
+
+    /**
+     * 退勤時間
+     */
+    private LocalDateTime clockOut;
 }

@@ -13,7 +13,7 @@ public interface JpaConst {
 
     //従業員テーブル
     String TABLE_EMP = "employees";//テーブル名
-    //授業インテーブルカラム
+    //従業員テーブルカラム
     String EMP_COL_ID="id";//id
     String EMP_COL_CODE="code";//社員番号
     String EMP_COL_NAME="name";//氏名
@@ -22,6 +22,8 @@ public interface JpaConst {
     String EMP_COL_CREATED_AT="created_at";//登録日時
     String EMP_COL_UPDATED_AT="updated_at";//更新日時
     String EMP_COL_DELETE_FLAG="delete_flag";//削除フラグ
+    String EMP_COL_CLOCK_IN="clock_in";//出勤時間
+    String EMP_COL_CLOCK_OUT="clock_out";//退勤時間
 
     int ROLE_ADMIN=1;//管理者権限ON（管理者）
     int ROLE_GENERAL=0;//管理者権限OFF(一般)
@@ -38,6 +40,8 @@ public interface JpaConst {
     String REP_COL_CONTENT="content";//日報の内容
     String REP_COL_CREATED_AT="created_at";//登録日時
     String REP_COL_UPDATED_AT="updated_at";//更新日時
+    String REP_COL_CLOCK_IN="clock_in";//出勤時間
+    String REP_COL_CLOCK_OUT="clock_out";//退勤時間
 
     //Entity名
     String ENTITY_EMP="employee";//従業員
