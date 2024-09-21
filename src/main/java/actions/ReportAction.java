@@ -2,6 +2,7 @@ package actions;
 
 import java.io.IOException;
 import java.time.LocalDate;
+import java.time.LocalDateTime;
 import java.util.List;
 
 import javax.servlet.ServletException;
@@ -77,6 +78,11 @@ public class ReportAction extends ActionBase {
         //日報情報の空インスタンスに、日報の日付＝今日の日付を設定する
         ReportView rv = new ReportView();
         rv.setReportDate(LocalDate.now());
+
+        //出退勤時間に現在の日付と時間を設定
+        rv.setClockIn(LocalDateTime.now());
+        rv.setClockOut(LocalDateTime.now());
+
         putRequestScope(AttributeConst.REPORT, rv);//日付のみ設定済みの日報インスタンス
 
         //新規登録画面を表示
@@ -105,6 +111,23 @@ public class ReportAction extends ActionBase {
             //セッションからログイン中の従業員情報を取得
             EmployeeView ev = (EmployeeView) getSessionScope(AttributeConst.LOGIN_EMP);
 
+            //出退勤時間が入力されていない場合は現在時刻で登録
+            LocalDateTime clockIn=null;
+            if (getRequestParam(AttributeConst.REP_CLOCK_IN) == null
+                    || getRequestParam(AttributeConst.REP_CLOCK_IN).equals("")) {
+                clockIn = LocalDateTime.now();
+            } else {
+                clockIn = LocalDateTime.parse(getRequestParam(AttributeConst.REP_CLOCK_IN));
+            }
+
+            LocalDateTime clockOut=null;
+            if (getRequestParam(AttributeConst.REP_CLOCK_OUT) == null
+                    || getRequestParam(AttributeConst.REP_CLOCK_OUT).equals("")) {
+                clockOut = LocalDateTime.now();
+            } else {
+                clockOut = LocalDateTime.parse(getRequestParam(AttributeConst.REP_CLOCK_OUT));
+            }
+
             //パラメータの値をもとに日誌情報のインスタンスを作成する
             ReportView rv = new ReportView(
                     null,
@@ -114,8 +137,8 @@ public class ReportAction extends ActionBase {
                     getRequestParam(AttributeConst.REP_CONTENT),
                     null,
                     null,
-                    null,
-                    null);
+                    clockIn,
+                    clockOut);
 
             //日誌情報登録
             List<String> errors = service.create(rv);
@@ -206,6 +229,8 @@ public class ReportAction extends ActionBase {
             rv.setReportDate(toLocalDate(getRequestParam(AttributeConst.REP_DATE)));
             rv.setTitle(getRequestParam(AttributeConst.REP_TITLE));
             rv.setContent(getRequestParam(AttributeConst.REP_CONTENT));
+            rv.setClockIn(toLocalDateTime(getRequestParam(AttributeConst.REP_CLOCK_IN)));
+            rv.setClockOut(toLocalDateTime(getRequestParam(AttributeConst.REP_CLOCK_OUT)));
 
             //日報データを更新する
             List<String> errors = service.update(rv);

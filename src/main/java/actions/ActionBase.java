@@ -4,6 +4,7 @@ import java.io.IOException;
 import java.lang.reflect.InvocationTargetException;
 import java.lang.reflect.Method;
 import java.time.LocalDate;
+import java.time.LocalDateTime;
 
 import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletContext;
@@ -172,7 +173,7 @@ public abstract class ActionBase {
     }
 
     /**
-     * 文字列をLicalDate型に変換する
+     * 文字列をLocalDate型に変換する
      * @param strDate 変換前文字列
      * @return 変換後LocalDateインスタンス
      */
@@ -181,6 +182,18 @@ public abstract class ActionBase {
             return LocalDate.now();
         }
         return LocalDate.parse(strDate);
+    }
+
+    /**
+     * 文字列をLocalDateTiime型に変換する
+     * @param strDate 変換前文字列
+     * @return 変換後LocalDateインスタンス
+     */
+    protected LocalDateTime toLocalDateTime(String strLoDate) {
+        if (strLoDate == null || strLoDate.equals("")) {
+            return LocalDateTime.now();
+        }
+        return LocalDateTime.parse(strLoDate);
     }
 
     /**
